@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WeatherBox() {
+export default function WeatherBox({ location, country, temp, status }) {
   const currentDate = new Date();
   const date = currentDate.getDate();
   const dayIndex = currentDate.getDay();
@@ -34,15 +34,17 @@ export default function WeatherBox() {
   return (
     <div className="container-flex">
       <div className="location-box">
-        <div className="location">New york, USA</div>
+        <div className="location">
+          {location}, {country}
+        </div>
         <div className="date">
           {`${days[dayIndex]}, ${months[monthIndex]} ${date}`}
         </div>
       </div>
 
-      <div className="temp-box">5ºC</div>
+      <div className="temp-box">{parseInt(temp)}ºC</div>
 
-      <div className="weather-box">Cloudy</div>
+      <div className="weather-box">{status}</div>
     </div>
   );
 }

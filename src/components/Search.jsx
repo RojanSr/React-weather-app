@@ -1,12 +1,16 @@
 import React from "react";
 
-export default function Search({ onUserSearch, controlInput }) {
+export default function Search({ onUserSearch, controlInput, onEnter }) {
   // function handleChange(e) {
   //   onUserSearch(e)
   // }
 
   const handleChange = (event) => {
     onUserSearch(event.target.value);
+  };
+
+  const handlePress = (event) => {
+    onEnter(event);
   };
 
   return (
@@ -17,6 +21,7 @@ export default function Search({ onUserSearch, controlInput }) {
         className="search--input"
         onChange={handleChange}
         value={controlInput}
+        onKeyDown={handlePress}
       />
     </div>
   );
