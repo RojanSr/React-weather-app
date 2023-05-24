@@ -24,7 +24,11 @@ export default function Search({ onUserSearch, controlInput, onUserEnter }) {
         onKeyDown={(e) => e.key == "Enter" && controlInput && onUserEnter()}
       />
 
-      <div className="fetch-plane" id="fetching-plane">
+      <div
+        className="fetch-plane"
+        id="fetching-plane"
+        onClick={() => controlInput && onUserEnter()}
+      >
         <i className="fa-regular fa-paper-plane"></i>
       </div>
     </div>
