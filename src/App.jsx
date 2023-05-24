@@ -5,7 +5,7 @@ import WeatherBox from "./components/WeatherBox";
 
 function App() {
   const api = {
-    key: "c8495d2d9d4dae61a4670de774427661",
+    key: import.meta.env.VITE_API_KEY,
     base: "http://api.openweathermap.org/data/2.5/",
   };
 
