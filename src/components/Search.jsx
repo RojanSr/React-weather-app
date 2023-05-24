@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Search({ onUserSearch, controlInput, onEnter }) {
+export default function Search({ onUserSearch, controlInput, onUserEnter }) {
   // function handleChange(e) {
   //   onUserSearch(e)
   // }
@@ -9,9 +9,9 @@ export default function Search({ onUserSearch, controlInput, onEnter }) {
     onUserSearch(event.target.value);
   };
 
-  const handlePress = (event) => {
-    onEnter(event);
-  };
+  // document
+  //   .getElementById("fetching-plane")
+  //   .addEventListener("click", () => controlInput && onUserEnter());
 
   return (
     <div className="search--box">
@@ -21,8 +21,12 @@ export default function Search({ onUserSearch, controlInput, onEnter }) {
         className="search--input"
         onChange={handleChange}
         value={controlInput}
-        onKeyDown={handlePress}
+        onKeyDown={(e) => e.key == "Enter" && controlInput && onUserEnter()}
       />
+
+      <div className="fetch-plane" id="fetching-plane">
+        <i className="fa-regular fa-paper-plane"></i>
+      </div>
     </div>
   );
 }

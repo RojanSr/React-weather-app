@@ -16,12 +16,10 @@ function App() {
     setQuery(value);
   }
 
-  function fetchData(evt) {
-    if (evt.key == "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then((res) => res.json())
-        .then((data) => setWeatherData(data));
-    }
+  function fetchData() {
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then((res) => res.json())
+      .then((data) => setWeatherData(data));
   }
 
   function getWeatherClass() {
@@ -47,7 +45,7 @@ function App() {
       <Search
         onUserSearch={handleSearch}
         controlInput={query}
-        onEnter={fetchData}
+        onUserEnter={fetchData}
       />
       {typeof weatherData != "undefined" && (
         <WeatherBox
