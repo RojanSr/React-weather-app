@@ -6,7 +6,7 @@ export default function Search({ onUserSearch, controlInput, onUserEnter }) {
   // }
 
   const handleChange = (event) => {
-    onUserSearch(event.target.value);
+    onUserSearch(event.target.value.replace(/ /g, "+"));
   };
 
   // document
@@ -20,7 +20,7 @@ export default function Search({ onUserSearch, controlInput, onUserEnter }) {
         placeholder="Search for places..."
         className="search--input"
         onChange={handleChange}
-        value={controlInput}
+        value={controlInput.replace(/\+/g, " ")}
         onKeyDown={(e) => e.key == "Enter" && controlInput && onUserEnter()}
       />
 
