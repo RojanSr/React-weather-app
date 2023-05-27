@@ -17,7 +17,8 @@ function App() {
   }
 
   function fetchData() {
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    const place = query.replace(/ /g, "+");
+    fetch(`${api.base}weather?q=${place}&units=metric&APPID=${api.key}`)
       .then((res) => res.json())
       .then((data) => setWeatherData(data));
   }
