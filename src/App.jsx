@@ -19,8 +19,19 @@ function App() {
   function fetchData() {
     const place = query.replace(/ /g, "+");
     fetch(`${api.base}weather?q=${place}&units=metric&APPID=${api.key}`)
-      .then((res) => res.json())
-      .then((data) => setWeatherData(data));
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(res.status);
+        }
+        return res.json();
+      })
+      .then((data) => setWeatherData(data))
+      .catch((err) =>
+        alert(
+          "It seems like there is typo in the query. Please check and try again. " +
+            err
+        )
+      );
   }
 
   function getWeatherClass() {
